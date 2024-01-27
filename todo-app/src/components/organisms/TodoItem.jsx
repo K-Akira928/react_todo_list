@@ -2,7 +2,8 @@ import { PrimaryButton } from "../atoms/button/PrimaryButton"
 import { SecondaryButton } from "../atoms/button/SecondaryButton"
 import { InputCheckbox } from "../atoms/input/InputCheckbox"
 
-export const TodoItem = () => {
+export const TodoItem = (props) => {
+  const { title } = props
   return (
     <li className={`
       flex
@@ -16,7 +17,7 @@ export const TodoItem = () => {
         w-7/12
         border-b
         text-center
-      `}>タイトル</span>
+      `}>{title}</span>
       <div className={`
         flex
         gap-2

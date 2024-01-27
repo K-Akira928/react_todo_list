@@ -1,7 +1,9 @@
 import { InputText } from "../atoms/input/InputText"
 import { PrimaryButton } from "../atoms/button/PrimaryButton"
 
-export const TodoAddForm = () => {
+export const TodoAddForm = (props) => {
+  const { onSubmit } = props;
+
   return (
     <>
       <form className={`
@@ -9,7 +11,7 @@ export const TodoAddForm = () => {
         m-auto
         flex
         justify-between
-      `}>
+      `} onSubmit={onSubmit}>
         <InputText placeholder={'Todoを入力'} />
         <PrimaryButton type={'submit'}>追加</PrimaryButton>
       </form>
