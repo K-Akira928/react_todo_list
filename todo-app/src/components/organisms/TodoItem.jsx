@@ -3,7 +3,7 @@ import { SecondaryButton } from "../atoms/button/SecondaryButton"
 import { InputCheckbox } from "../atoms/input/InputCheckbox"
 
 export const TodoItem = (props) => {
-  const { title } = props
+  const { title, onDeleteClick } = props
   return (
     <li className={`
       flex
@@ -23,7 +23,7 @@ export const TodoItem = (props) => {
         gap-2
       `}>
         <PrimaryButton>編集</PrimaryButton>
-        <SecondaryButton>削除</SecondaryButton>
+        <SecondaryButton onClick={onDeleteClick} >削除</SecondaryButton>
       </div>
     </li>
   )

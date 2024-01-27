@@ -1,5 +1,5 @@
 export const SecondaryButton = (props) => {
-  const { children } = props;
+  const { children, onClick } = props;
   return (
     <button className={`
       text-sm sm:text-base
@@ -12,7 +12,7 @@ export const SecondaryButton = (props) => {
 
       hover:bg-red-500
       hover:text-white
-    `}>
+    `} onClick={onClick}>
       {children}
     </button>
   )

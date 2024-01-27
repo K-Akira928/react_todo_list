@@ -28,6 +28,11 @@ function App() {
     const newTodos = [...todos, newTodo];
     setTodos(newTodos);
     setTodoId(todoId + 1);
+  };
+
+  const onTodoDelete = (id) => {
+    const newTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(newTodos);
   }
 
   return (
@@ -40,6 +45,7 @@ function App() {
             <TodoItem
               key={todo.id}
               title={todo.title}
+              onDeleteClick={() => onTodoDelete(todo.id)}
              />
           )
         })}
