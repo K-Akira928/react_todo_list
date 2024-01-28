@@ -8,6 +8,7 @@ import { FooterLayout } from './components/templates/FooterLayout';
 import { TodoCount } from './components/organisms/TodoCount';
 import { TodoItem } from './components/organisms/TodoItem';
 import { TodoEditItem } from './components/organisms/TodoEditItem';
+import { TodoCompletedItem } from './components/organisms/TodoCompletedItem';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -54,6 +55,14 @@ function App() {
     setTodos(newTodos);
   };
 
+  const onTodoCompleteToggle = (id) => {
+    const newTodos = [...todos];
+    const completedToggleTodoTarget = newTodos.find((todo) => todo.id === id);
+    completedToggleTodoTarget.isCompleted = !completedToggleTodoTarget.isCompleted;
+
+    setTodos(newTodos);
+  }
+
   return (
     <>
       <HeaderLayout />
@@ -61,19 +70,30 @@ function App() {
       <TodoListLayout>
         {todos.map((todo) => {
           return (
-            todo.isEdit ? (
-              <TodoEditItem
-                key={todo.id}
-                todo={todo}
-                onEditSave={(e) => onTodoEditSave({e, id: todo.id})}
-              />
+            todo.isEdit
+                ? (
+                <TodoEditItem
+                  key={todo.id}
+                  todo={todo}
+                  onEditSave={(e) => onTodoEditSave({e, id: todo.id})}
+                />
               ) : (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onDeleteClick={() => onTodoDelete(todo.id)}
-                onEditClick={() => onTodoEdit(todo.id)}
-              />
+                todo.isCompleted
+                ? (
+                <TodoCompletedItem
+                  key={todo.id}
+                  todo={todo}
+                  onCheckboxToggle={() => onTodoCompleteToggle(todo.id)}
+                />
+              ) : (
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  onDeleteClick={() => onTodoDelete(todo.id)}
+                  onEditClick={() => onTodoEdit(todo.id)}
+                  onCheckboxToggle={() => onTodoCompleteToggle(todo.id)}
+                />
+              )
             )
           )
         })}

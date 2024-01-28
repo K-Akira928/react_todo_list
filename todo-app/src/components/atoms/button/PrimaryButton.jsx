@@ -6,7 +6,7 @@ export const PrimaryButton = (props) => {
       font-bold
       border
       rounded-xl
-      py-1.5 px-3 sm:py-1 sm:px-3
+      py-1.5 px-3
       border-sky-400
       text-sky-400
 
