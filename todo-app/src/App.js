@@ -7,6 +7,7 @@ import { TodoListLayout } from './components/templates/TodoListLayout';
 import { FooterLayout } from './components/templates/FooterLayout';
 import { TodoCount } from './components/organisms/TodoCount';
 import { TodoItem } from './components/organisms/TodoItem';
+import { TodoEditItem } from './components/organisms/TodoEditItem';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -33,7 +34,25 @@ function App() {
   const onTodoDelete = (id) => {
     const newTodos = [...todos].filter((todo) => todo.id !== id);
     setTodos(newTodos);
-  }
+  };
+
+  const onTodoEdit = (id) => {
+    const newTodos = [...todos];
+    const editTodoTarget = newTodos.find((todo) => todo.id === id);
+    editTodoTarget.isEdit = !editTodoTarget.isEdit;
+    setTodos(newTodos);
+  };
+
+  const onTodoEditSave = ({e, id}) => {
+    e.preventDefault();
+
+    const newTodos = [...todos];
+    const editTodoTarget = newTodos.find((todo) => todo.id === id);
+    editTodoTarget.title = e.target.firstChild.value;
+    editTodoTarget.isEdit = !editTodoTarget.isEdit;
+
+    setTodos(newTodos);
+  };
 
   return (
     <>
@@ -42,11 +61,20 @@ function App() {
       <TodoListLayout>
         {todos.map((todo) => {
           return (
-            <TodoItem
-              key={todo.id}
-              title={todo.title}
-              onDeleteClick={() => onTodoDelete(todo.id)}
-             />
+            todo.isEdit ? (
+              <TodoEditItem
+                key={todo.id}
+                todo={todo}
+                onEditSave={(e) => onTodoEditSave({e, id: todo.id})}
+              />
+              ) : (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onDeleteClick={() => onTodoDelete(todo.id)}
+                onEditClick={() => onTodoEdit(todo.id)}
+              />
+            )
           )
         })}
       </TodoListLayout>
