@@ -1,4 +1,5 @@
-export const TodoCount = () => {
+export const TodoCount = (props) => {
+  const { isAllTodoCount, isCompletedTodoCount } = props;
   return (
     <>
       <div className={`
@@ -7,9 +8,9 @@ export const TodoCount = () => {
         p-5
         text-xl
       `}>
-        <p>全てのタスク：0</p>
-        <p>完了したタスク：0</p>
-        <p>未完了のタスク：0</p>
+        <p>全てのタスク：{isAllTodoCount}</p>
+        <p>完了したタスク：{isCompletedTodoCount}</p>
+        <p>未完了のタスク：{(isAllTodoCount - isCompletedTodoCount)}</p>
       </div>
     </>
   )

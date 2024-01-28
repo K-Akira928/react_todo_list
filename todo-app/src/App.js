@@ -10,6 +10,8 @@ import { TodoItem } from './components/organisms/TodoItem';
 import { TodoEditItem } from './components/organisms/TodoEditItem';
 import { TodoCompletedItem } from './components/organisms/TodoCompletedItem';
 
+import { useTodoCount } from './hooks/useTodosStatus';
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [todoId, setTodoId] = useState(1);
@@ -63,6 +65,8 @@ function App() {
     setTodos(newTodos);
   }
 
+  const todoCount = useTodoCount(todos);
+
   return (
     <>
       <HeaderLayout />
@@ -99,7 +103,10 @@ function App() {
         })}
       </TodoListLayout>
       <FooterLayout>
-        <TodoCount />
+        <TodoCount
+          isAllTodoCount={todoCount.isAllCount}
+          isCompletedTodoCount={todoCount.isCompletedCount}
+        />
       </FooterLayout>
     </>
   );
