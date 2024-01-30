@@ -13,13 +13,13 @@ export const useTodos = () => {
     setTodos(newTodos);
   };
 
-  const deleteTodo = ({id}) => {
+  const deleteTodo = ({ id }) => {
     const newTodos = [...todos].filter((todo) => todo.id !== id);
 
     setTodos(newTodos);
   };
 
-  const todoStatusChange = ({status, id, value}) => {
+  const todoStatusChange = ({ status, id, value }) => {
     const newTodos = [...todos];
     const toggleTarget = newTodos.find((todo) => todo.id === id);
 
@@ -29,10 +29,14 @@ export const useTodos = () => {
   };
 
   const countTodos = () => {
+    const isAll = todos.length;
+    const isCompleted = todos.filter((todo) => todo.isCompleted).length;
+    const isIncompleted = isAll - isCompleted;
     return {
-      isAll: todos.length,
-      isCompleted: todos.filter((todo) => todo.isCompleted).length
-    }
+      isAll,
+      isCompleted,
+      isIncompleted,
+    };
   };
 
   return { addTodo, deleteTodo, countTodos, todoStatusChange };
