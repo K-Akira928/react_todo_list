@@ -1,7 +1,8 @@
 export const PrimaryButton = (props) => {
   const { children, type, onClick } = props;
   return (
-    <button className={`
+    <button
+      className={`
       text-sm sm:text-base
       font-bold
       border
@@ -13,10 +14,10 @@ export const PrimaryButton = (props) => {
       hover:bg-sky-500
       hover:text-white
     `}
-      type={type || 'button' }
+      type={type || "button"}
       onClick={onClick}
     >
       {children}
     </button>
-  )
-}
+  );
+};

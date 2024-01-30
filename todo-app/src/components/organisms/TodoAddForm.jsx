@@ -1,20 +1,33 @@
-import { InputText } from "../atoms/input/InputText"
-import { PrimaryButton } from "../atoms/button/PrimaryButton"
+import { useTodos } from "../../hooks/useTodos";
+import { InputAndButtonForm } from "../molecules/InputAndButtonForm";
 
-export const TodoAddForm = (props) => {
-  const { onSubmit } = props;
+export const TodoAddForm = () => {
+  const { addTodo } = useTodos();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const inputText = e.target.firstChild.value;
+    if (inputText === "") return;
+    e.target.firstChild.value = "";
+
+    addTodo(inputText);
+  };
 
   return (
     <>
-      <form className={`
-        w-10/12 sm:w-7/12 lg:w-5/12
-        m-auto
-        flex
-        justify-between
-      `} onSubmit={onSubmit}>
-        <InputText placeholder={'Todoを入力'} />
-        <PrimaryButton type={'submit'}>追加</PrimaryButton>
-      </form>
+      <InputAndButtonForm
+        formClassName={`
+          w-10/12 sm:w-7/12 lg:w-5/12
+          m-auto
+          flex
+          justify-between
+        `}
+        onSubmit={handleSubmit}
+        placeholder={"Todoを入力"}
+        buttonType={"submit"}
+        buttonText={"追加"}
+      />
     </>
-  )
-}
+  );
+};
