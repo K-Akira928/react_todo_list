@@ -2,7 +2,8 @@ export const InputText = (props) => {
   const { placeholder, onChange, defaultValue } = props;
   return (
     <>
-      <input className={`
+      <input
+        className={`
         w-10/12 sm:w-10/12 lg:w-10/12
         text-center
         border
@@ -11,7 +12,12 @@ export const InputText = (props) => {
 
         focus:outline-none
         focus:border-sky-400
-      `} type="text" placeholder={placeholder} onChange={onChange} defaultValue={defaultValue} />
+      `}
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+        defaultValue={defaultValue}
+      />
     </>
-  )
-}
+  );
+};
