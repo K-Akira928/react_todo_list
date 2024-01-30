@@ -7,6 +7,11 @@ export const TodoCompletedItem = (props) => {
 
   const { todoStatusChange, deleteTodo } = useTodos();
 
+  const handleDelete = ({ id }) => {
+    alert("本当に削除してもよろしいですか？");
+    deleteTodo({ id });
+  };
+
   return (
     <li
       className={`
@@ -53,7 +58,7 @@ export const TodoCompletedItem = (props) => {
         justify-end
       `}
       >
-        <SecondaryButton onClick={() => deleteTodo({ id: todo.id })}>
+        <SecondaryButton onClick={() => handleDelete({ id: todo.id })}>
           削除
         </SecondaryButton>
       </div>
