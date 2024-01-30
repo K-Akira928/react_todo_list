@@ -1,7 +1,7 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const todosState = atom({
-  key: 'todos',
+  key: "todos",
   default: [],
-  dangerouslyAllowMutability: true
-})
+  dangerouslyAllowMutability: true,
+});
