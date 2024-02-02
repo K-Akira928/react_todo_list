@@ -24,7 +24,7 @@ export const TodoAddForm = () => {
           justify-between
         `}
         onSubmit={handleSubmit}
-        placeholder={"Todoを入力"}
+        placeholder="Todoを入力"
         buttonType={"submit"}
         buttonText={"追加"}
       />
