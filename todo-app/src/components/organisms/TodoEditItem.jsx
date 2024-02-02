@@ -1,6 +1,4 @@
 import { useTodos } from "../../hooks/useTodos";
-import { PrimaryButton } from "../atoms/button/PrimaryButton";
-import { InputText } from "../atoms/input/InputText";
 import { InputAndButtonForm } from "../molecules/InputAndButtonForm";
 
 export const TodoEditItem = (props) => {

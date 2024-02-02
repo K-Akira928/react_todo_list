@@ -1,5 +1,4 @@
 export const InputText = (props) => {
-  const { placeholder, onChange, defaultValue } = props;
   return (
     <>
       <input
@@ -14,9 +13,7 @@ export const InputText = (props) => {
         focus:border-sky-400
       `}
         type="text"
-        placeholder={placeholder}
-        onChange={onChange}
-        defaultValue={defaultValue}
+        {...props}
       />
     </>
   );

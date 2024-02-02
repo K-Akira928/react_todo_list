@@ -1,5 +1,5 @@
 export const PrimaryButton = (props) => {
-  const { children, type, onClick } = props;
+  const { children } = props;
   return (
     <button
       className={`
@@ -14,8 +14,7 @@ export const PrimaryButton = (props) => {
       hover:bg-sky-500
       hover:text-white
     `}
-      type={type || "button"}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

@@ -1,5 +1,4 @@
 export const InputCheckbox = (props) => {
-  const { onChange, checked } = props;
   return (
     <input
       className={`
@@ -8,8 +7,7 @@ export const InputCheckbox = (props) => {
       accent-orange-400
     `}
       type="checkbox"
-      onChange={onChange}
-      defaultChecked={checked}
+      {...props}
     />
   );
 };
