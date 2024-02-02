@@ -2,7 +2,7 @@ import { useTodos } from "../../hooks/useTodos";
 
 export const TodoCount = () => {
   const { countTodos } = useTodos();
-  const count = countTodos();
+  const { isAll, isCompleted, isIncompleted } = countTodos();
   return (
     <>
       <div
@@ -13,9 +13,9 @@ export const TodoCount = () => {
         text-xl
       `}
       >
-        <p>全てのタスク：{count.isAll}</p>
-        <p>完了したタスク：{count.isCompleted}</p>
-        <p>未完了のタスク：{count.isIncompleted}</p>
+        <p>全てのタスク：{isAll}</p>
+        <p>完了したタスク：{isCompleted}</p>
+        <p>未完了のタスク：{isIncompleted}</p>
       </div>
     </>
   );
